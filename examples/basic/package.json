@@ -1,0 +1,14 @@
+{
+  "name": "omniscience-example-devtools",
+  "description": "Omniscience example. Test by editing objects directly in the dev tools",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "DEBUG=true node server.js"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.12.1",
+    "babel-core": "^5.0.0",
+    "babel-loader": "^5.0.0"
+  }
+}
