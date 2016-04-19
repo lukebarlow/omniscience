@@ -1,6 +1,6 @@
 {
-  "name": "omniscience-example-basic",
-  "description": "Omniscience example. Test by editing objects directly in the dev tools",
+  "name": "omniscience-specs",
+  "description": "Omniscience specs. Run the server and hit localhost:3000",
   "version": "0.1.0",
   "scripts": {
     "start": "DEBUG=true node server.js"

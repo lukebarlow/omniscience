@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <script src="js/omniscience.js"></script>
+        <script src="js/omniscience-prong2-example.js"></script>
+        <style>
+            html {
+                width: 100%;
+                height: 100%;
+            }
+
+            #intro {
+                margin: 30px;
+            }
+
+            .clickDetector {
+              fill: rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+            }
+
+            .region {
+                stroke: red;
+                fill: rgba(254, 200, 0, 0.6);
+                cursor: pointer;
+            }
+
+            .lyric {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="intro">
+        This example brings in some sketches of components from 'prong2', a library
+        of web audio related gui components. It shows a simple draggable
+        components, and demonstrates how they are kept in sync with omniscience.
+        </div>
+        <div id="main"></div>
+        <script>
+            init()
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script src="js/omniscience.js"></script>
+        <script src="js/omniscience-react-example.js"></script>
+        <style>
+            html {
+                width: 100%;
+                height: 100%;
+            }
+
+            .item {
+                border: 1pt solid steelblue;
+                margin: 2px;
+                padding: 2px;
+                background-color: rgba(0, 0, 255, 0.1);
+            }
+
+            #intro {
+                margin: 30px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="intro">Below is a react rendering of the 'tracks' object, which is bound to
+        the global 'tracks' object with omniscience. To test it, open the dev
+        tools and edit the tracks object directly. For example, try
+        <pre>
+tracks[0].volume++
+tracks.push({a:1, b:2, c:3})
+tracks.pop()
+tracks.splice(1,1,[[1,2,3],[4,5,6],[7,8,9]])
+        </pre>
+        </div>
+        <div id="main"></div>
+        <script>
+            init()
+        </script>
+    </body>
+</html>

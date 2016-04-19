@@ -1,9 +1,13 @@
 {
-  "name": "omniscience-example-basic",
-  "description": "Omniscience example. Test by editing objects directly in the dev tools",
+  "name": "omniscience-example-react",
+  "description": "Omniscience example, showing binding of arbitrary javascript object to a react view",
   "version": "0.1.0",
   "scripts": {
     "start": "DEBUG=true node server.js"
+  },
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
   },
   "devDependencies": {
     "webpack": "^1.12.3",

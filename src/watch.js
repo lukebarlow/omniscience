@@ -57,7 +57,6 @@ function watch(o){
             var valueIsObject = typeof(value) == 'object'
             // if a new object property is added, then watch that too
             if (value && valueIsObject && !alreadyExisted && !hidden){
-                //debugger
                 value = watch(value)
                 value.on('syncChange.' + o._id, function(){
                     fireChangeAtEndOfThread()
@@ -65,14 +64,12 @@ function watch(o){
             }
             target[key] = value
             if (changed && !hidden){
-                console.log('firing change for key', key)
                 fireChangeAtEndOfThread()
             }
             return true
         },
 
         deleteProperty: function(target, property){
-            //console.log('deleting', target, property)
             // do a cleanup on the child object. Make it no
             // longer watchable
             const child = target[property]
@@ -99,7 +96,7 @@ function watch(o){
         }
     })
 
-    Object.defineProperty(o, '_watchable', {enumerable : false, value : true})
+    Object.defineProperty(o, '_watchable', {enumerable : false, configurable: true, value : true})
     return proxy
 }
 

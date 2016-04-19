@@ -2,7 +2,8 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        'omniscience' : '../../src/index.js'
+        'omniscience' : '../../src/index.js',
+        'specs' : '../../src/specs/index.js'
     },
 
     output: {
