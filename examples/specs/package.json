@@ -1,14 +1,13 @@
 {
   "name": "omniscience-specs",
-  "description": "Omniscience specs. Run the server and hit localhost:3000",
-  "version": "0.1.0",
+  "description": "Omniscience specs. npm start and hit localhost:3000",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukebarlow/omniscience.git"
+  },
   "scripts": {
     "start": "DEBUG=true node server.js"
-  },
-  "devDependencies": {
-    "webpack": "^1.12.3",
-    "webpack-dev-server": "^1.12.1",
-    "babel-core": "^5.0.0",
-    "babel-loader": "^5.0.0"
   }
 }

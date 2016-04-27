@@ -1,44 +1,53 @@
 <html>
-	<head>
-	    <script src="js/omniscience.js"></script>
-        <style>
-            html {
-                width: 100%;
-                height: 100%;
-            }
-        </style>
-	</head>
-    <body>
-        <div style="width:300px;float:left">
-            <button onclick="tracks[0].volume++">tracks[0].volume++</button>
-            <button onclick="tracks[0].volume--">tracks[0].volume--</button>
-            <button onclick="tracks[1].volume++">tracks[1].volume++</button>
-            <button onclick="tracks[1].volume--">tracks[1].volume--</button>
-            <button onclick="tracks[2].volume++">tracks[2].volume++</button>
-            <button onclick="tracks[2].volume--">tracks[2].volume--</button>
-            <pre id="tracks"></pre>
-        </div>
-        <script>
+  <head>
+    <script src="js/omniscience.js"></script>
+    <style>
+      html {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="build-first-warning" style="display:none;color:red">
+      You need to run 'npm run build' in the root directory before the examples
+      will work<br />
+      <br />
+    </div>
+    <div style="width:300px;float:left">
+      <button onclick="tracks[0].volume++">tracks[0].volume++</button>
+      <button onclick="tracks[0].volume--">tracks[0].volume--</button>
+      <button onclick="tracks[1].volume++">tracks[1].volume++</button>
+      <button onclick="tracks[1].volume--">tracks[1].volume--</button>
+      <button onclick="tracks[2].volume++">tracks[2].volume++</button>
+      <button onclick="tracks[2].volume--">tracks[2].volume--</button>
+      <pre id="tracks"></pre>
+    </div>
+    <script>
 
-            tracks = [
-              {volume : 1, pan : -50},
-              {volume : 5, pan : 10},
-              {volume : 8, pan : 40}
-            ]
+      if (!window.omniscience){
+        document.querySelector('#build-first-warning').style.display = 'block'
+      }else{
+        tracks = [
+          {volume : 1, pan : -50},
+          {volume : 5, pan : 10},
+          {volume : 8, pan : 40}
+        ]
 
-            tracks = omniscience.watch(tracks)
+        tracks = omniscience.watch(tracks)
 
-            function render(){
-                document.querySelector('#tracks')
-                    .innerHTML = JSON.stringify(tracks, null, 4)
-            }
+        function render(){
+          document.querySelector('#tracks')
+            .innerHTML = JSON.stringify(tracks, null, 4)
+        }
 
-            tracks.on('change', function(){
-                console.log('saw a change')
-                render()
-            })
-            render()
-            
-        </script>
-    </body>
+        tracks.on('change', function(){
+          console.log('saw a change')
+          render()
+        })
+        render()
+      }
+
+    </script>
+  </body>
 </html>

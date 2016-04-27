@@ -2,13 +2,12 @@
   "name": "omniscience-example-basic",
   "description": "Omniscience example. Test by editing objects directly in the dev tools",
   "version": "0.1.0",
-  "scripts": {
-    "start": "DEBUG=true node server.js"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukebarlow/omniscience.git"
   },
-  "devDependencies": {
-    "webpack": "^1.12.3",
-    "webpack-dev-server": "^1.12.1",
-    "babel-core": "^5.0.0",
-    "babel-loader": "^5.0.0"
+  "scripts": {
+    "start": "node server.js"
   }
 }
