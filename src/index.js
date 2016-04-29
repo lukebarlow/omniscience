@@ -6,4 +6,5 @@ try {
 }
 
 import watch from './watch'
+export default { watch : watch }
 export { watch }

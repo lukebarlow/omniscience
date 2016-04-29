@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import Tracks from './components/Tracks'
 import Mixer from './components/Mixer'
 import tracks from './tracks'
-import { watch } from 'omniscience'
+import { watch } from '../../src/index'
 
 
 window.init = function(){

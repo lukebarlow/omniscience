@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Item from './Item'
-import { watch } from 'omniscience'
+import { watch } from '../../src/index'
 
 let tracks = [
  {volume : 1, pan : -50},
