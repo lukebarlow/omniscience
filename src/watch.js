@@ -1,3 +1,10 @@
+try {
+  Proxy
+} catch (e) {
+  throw `Omniscience requires a browser or node.js version which 
+    supports the Proxy object. This came into node in version 6.0.0`
+}
+
 import d3 from 'd3-dispatch'
 import uid from './uid'
 

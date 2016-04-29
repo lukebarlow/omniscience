@@ -3,10 +3,11 @@ import { render } from 'react-dom'
 import Tracks from './components/Tracks'
 import Mixer from './components/Mixer'
 import tracks from './tracks'
+import { watch } from 'omniscience'
 
 
 window.init = function(){
-    window.tracks = omniscience.watch(tracks)
+    window.tracks = watch(tracks)
     function draw(){
         render(
             <div>

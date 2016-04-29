@@ -11,7 +11,12 @@
     "start": "DEBUG=true node server.js"
   },
   "dependencies": {
+    "omniscience": "^1.0.0",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.1",
+    "webpack-hot-middleware": "^2.9.1"
   }
 }

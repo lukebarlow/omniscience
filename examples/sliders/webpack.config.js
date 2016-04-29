@@ -1,24 +1,29 @@
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
-    entry: {
-        'omniscience' : '../../src/index.js',
-        'omniscience-prong2-example' : './index.js'
-    },
-
-    output: {
-        path: __dirname + '/js/',
-        publicPath: '/js/',
-        filename: '[name].js'
-    },
-
-    module: {
-        loaders: [
-            { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
-        ]
-    },
-    resolve: {
-        extensions: ['', '.js', '.json']
-    },
-    devtool : 'inline-source-map'
-};
+  devtool: 'cheap-module-eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './index'
+  ],
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/js/'
+  },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: [ 'babel' ],
+        exclude: /node_modules/,
+        include: __dirname
+      }
+    ]
+  }
+}

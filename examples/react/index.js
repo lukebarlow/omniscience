@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Item from './Item'
+import { watch } from 'omniscience'
 
 let tracks = [
  {volume : 1, pan : -50},
@@ -10,7 +11,7 @@ let tracks = [
 
 window.init = function(){
 	
-    window.tracks = omniscience.watch(tracks)
+    window.tracks = watch(tracks)
 
     function draw(){
         render(
