@@ -25,14 +25,16 @@ Changes will be seen in any descendant of the originally watched object. All
 descendants of the originally watched object are watchable (i.e. you can set
 a 'change' handler on them).
 
-If setting multiple handlers on the same object, they should be distinguished
-by following with a name. e.g. `data.on('change.details')` and 
-`data.on('change.summary')`. See [d3-dispatch](https://github.com/d3/d3-dispatch)
-for details.
-
 See the web apps in the examples directory for other examples.
 
 This module relies on the Proxy object, which at the time of writing is
 supported on the latest Firefox and Chrome, and the just released node 6.0. 
 In Safari, it works in the Safari Technology Preview version, but not yet in 
 the main public version.
+
+For the reader familiar with the d3-dispatch object, note that omniscience
+automatically makes the handler types unique, so, unlike d3-dispatch, if you
+set data.on('change', handler1) then data.on('change', handler2), the second
+handler will not clobber the first - instead they will both be fired. It is
+not necessary to write data.on('change.h1', handler1) and 
+data.on('change.h2', handler2)
