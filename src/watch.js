@@ -89,7 +89,7 @@ function watch(o){
 
   var proxy = new Proxy(o, handler)
   proxy.on = function(type, handler){
-    dispatch.on(type, handler)
+    dispatch.on(type + '.' + uid(), handler)
   }
   
   Object.keys(o).forEach(function(key){

@@ -13,8 +13,6 @@ function watchAndSpy(obj){
 }
 
 
-
-
 describe('watch', () => {
 
   it('pushing to a watched list calls the change handler once', (done)=>{
@@ -229,6 +227,18 @@ describe('watch', () => {
         expect(additionalCalls).toEqual(1)
         done()
       }, 1)
+    }, 1)
+  })
+
+  it('Two watchers on the same object are both fired', (done)=>{
+    let [obj, spy] = watchAndSpy({a : 1})
+    let spy2 = jasmine.createSpy('spy2')
+    obj.on('change', spy2)
+    obj.a = 29
+    setTimeout(() => {
+      expect(spy.calls.count()).toEqual(1)
+      expect(spy2.calls.count()).toEqual(1)
+      done()
     }, 1)
   })
 
