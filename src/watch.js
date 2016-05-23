@@ -9,13 +9,18 @@ import d3 from 'd3-dispatch'
 import uid from './uid'
 
 
-function beginsWithUnderscore(s){
+function beginsWithUnderscore(s) {
   return s.slice(0,1) == '_'
 }
 
 
-function isReserved(s){
+function isReserved(s) {
   return ['on', 'sort'].indexOf(s) >= 0
+}
+
+
+function isWatchableObject(o) {
+  return typeof(o)  == 'object' && o != null
 }
 
 
@@ -59,9 +64,9 @@ function watch(o){
       }
       var changed = (target[key] != value)
       var alreadyExisted = key in target
-      var valueIsObject = typeof(value) == 'object'
+      var watchable = isWatchableObject(value)
       // if a new object property is added, then watch that too
-      if (value && valueIsObject && !alreadyExisted && !hidden){
+      if (watchable && !alreadyExisted && !hidden){
         value = watch(value)
         value.on('syncChange.' + o._id, function(){
           fireChangeAtEndOfThread()
@@ -93,7 +98,7 @@ function watch(o){
   }
   
   Object.keys(o).forEach(function(key){
-    if (!beginsWithUnderscore(key) && typeof(o[key]) == 'object' && o[key] != null){
+    if (!beginsWithUnderscore(key) && isWatchableObject(o[key])) {
       o[key] = watch(o[key])
       o[key].on('syncChange.' + o._id, function(){
         fireChangeAtEndOfThread()
