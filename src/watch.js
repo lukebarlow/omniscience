@@ -19,7 +19,7 @@ function isReserved(s){
 }
 
 
-function watch(o){    
+function watch(o){
   if (o._watchable){
     return o
   }
@@ -93,7 +93,7 @@ function watch(o){
   }
   
   Object.keys(o).forEach(function(key){
-    if (!beginsWithUnderscore(key) && typeof(o[key]) == 'object'){
+    if (!beginsWithUnderscore(key) && typeof(o[key]) == 'object' && o[key] != null){
       o[key] = watch(o[key])
       o[key].on('syncChange.' + o._id, function(){
         fireChangeAtEndOfThread()

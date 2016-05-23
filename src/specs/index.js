@@ -242,6 +242,15 @@ describe('watch', () => {
     }, 1)
   })
 
+  it('does not break when a property value is null', (done)=>{
+    let [obj, spy] = watchAndSpy({a : null})
+    obj.a = 1
+    setTimeout(() => {
+      expect(spy.calls.count()).toEqual(1)
+      done()
+    }, 1)
+  })
+
 })
 
 
