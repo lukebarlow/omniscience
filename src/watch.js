@@ -83,11 +83,14 @@ function watch(o){
       // do a cleanup on the child object. Make it no
       // longer watchable
       const child = target[property]
-      if (child && child._unwatch){
+      const wasWatched = isWatchableObject(child) && child._unwatch
+      if (wasWatched){
         child._unwatch()
       }
       delete target[property]
-      fireChangeAtEndOfThread()
+      if (wasWatched){
+        fireChangeAtEndOfThread()
+      }
       return true
     }
   }
