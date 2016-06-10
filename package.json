@@ -22,7 +22,7 @@
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min"
   },
   "dependencies": {
-    "d3-dispatch": "latest"
+    "d3-dispatch": "^0.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.3.15",
