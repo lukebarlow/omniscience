@@ -5,7 +5,7 @@ try {
     supports the Proxy object. This came into node in version 6.0.0`
 }
 
-import d3 from 'd3-dispatch'
+import { dispatch } from 'd3-dispatch'
 import uid from './uid'
 
 
@@ -33,23 +33,23 @@ function watch(o){
     Object.defineProperty(o, '_id', {enumerable : false, value : uid()})
   }
 
-  var dispatch = d3.dispatch('change', 'syncChange')
+  var dispatcher = dispatch('change', 'syncChange')
   var timeout = null
 
   o._unwatch = function(){
     // hacking the internals of d3.dispatch to just remove all handlers
-    dispatch._.change = []
-    dispatch._.syncChange = []
+    dispatcher._.change = []
+    dispatcher._.syncChange = []
     delete o._watchable
   }
   Object.defineProperty(o, '_unwatch', {enumerable : false})
 
   function fireChangeAtEndOfThread(info){
-    dispatch.call('syncChange')
+    dispatcher.call('syncChange')
     if (timeout == null){
       timeout = setTimeout(function(){
         timeout = null
-        dispatch.call('change')
+        dispatcher.call('change')
       }, 0)
     }
   }
@@ -97,7 +97,7 @@ function watch(o){
 
   var proxy = new Proxy(o, handler)
   proxy.on = function(type, handler){
-    dispatch.on(type + '.' + uid(), handler)
+    dispatcher.on(type + '.' + uid(), handler)
   }
   
   Object.keys(o).forEach(function(key){
