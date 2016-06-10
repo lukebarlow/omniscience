@@ -1,7 +1,7 @@
 {
   "name": "omniscience",
   "description": "Watch for changes in arbitrary javascript data structures",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "license": "MIT",
   "repository": {
     "type": "git",
