@@ -1,7 +1,7 @@
 {
   "name": "omniscience",
   "description": "Watch for changes in arbitrary javascript data structures",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "build:umd": "npm run build:commonjs && cross-env BABEL_ENV=commonjs NODE_ENV=development webpack lib/index.js dist/omniscience.js",
     "build:umd:min": "npm run build:commonjs && cross-env BABEL_ENV=commonjs NODE_ENV=production webpack lib/index.js dist/omniscience.min.js",
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
-    "prepublish" : "npm run build"
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "d3-dispatch": "^0.5.0"
