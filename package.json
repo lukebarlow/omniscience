@@ -19,7 +19,8 @@
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:umd": "npm run build:commonjs && cross-env BABEL_ENV=commonjs NODE_ENV=development webpack lib/index.js dist/omniscience.js",
     "build:umd:min": "npm run build:commonjs && cross-env BABEL_ENV=commonjs NODE_ENV=production webpack lib/index.js dist/omniscience.min.js",
-    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min"
+    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
+    "prepublish" : "npm run build"
   },
   "dependencies": {
     "d3-dispatch": "^0.5.0"
