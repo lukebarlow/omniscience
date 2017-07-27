@@ -1,25 +1,25 @@
 import React, { PropTypes } from 'react'
 
-function objectValues(o){
- return Object.keys(o).map((key) => o[key])
+function objectValues (o) {
+  return Object.keys(o).map((key) => o[key])
 }
 
-function objectItems(o){
-  return Object.keys(o).map((key) => [key, o[key]])
+function objectItems (o) {
+  var keys = Object.keys(o).filter((key) => !key.startsWith('_') && !(key === 'on') && !(key === 'observe'))
+  return keys.map((key) => [key, o[key]])
 }
 
 const Item = ({o, name}) => {
+  // console.log('rendering for ', o)
 
-  //console.log('rendering for ', o)
-
-  switch (typeof(o)){
+  switch (typeof (o)) {
     case 'string':
     case 'number':
-      return <div className="item">{name}:{o}</div>
-    break;
+      return <div className='item'>{name}:{o}</div>
+      break
     default:
-      return <div className="item">
-        {objectItems(o).map( ([key, value], i) =>
+      return <div className='item'>
+        {objectItems(o).map(([key, value], i) =>
           <Item
             o={value}
             key={key}
@@ -27,7 +27,7 @@ const Item = ({o, name}) => {
           />
         )}
       </div>
-    break;
+      break
   }
 }
 
