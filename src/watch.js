@@ -61,8 +61,9 @@ function watch (o) {
       var changed = (target[key] != value)
       var alreadyExisted = key in target
       var watchable = isWatchableObject(value)
+
       // if a new object property is added, then watch that too
-      if (watchable && !alreadyExisted && !hidden) {
+      if (watchable && !hidden) {
         value = watch(value)
         value.on('syncChange.' + o._id, function () {
           fireChangeAtEndOfThread()

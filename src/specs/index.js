@@ -7,14 +7,14 @@ import watch from '../watch'
 function watchAndSpy (obj) {
   let watchedObject = watch(obj)
   let spy = jasmine.createSpy('spy')
-  watchedObject.on('change', spy)
+  watchedObject.observe(spy)
   return [watchedObject, spy]
 }
 
-function watchAndSpyWithObserve (obj) {
+function watchAndSpyWithOnChange (obj) {
   let watchedObject = watch(obj)
   let spy = jasmine.createSpy('spy')
-  watchedObject.observe(spy)
+  watchedObject.on('change', spy)
   return [watchedObject, spy]
 }
 
@@ -34,6 +34,19 @@ describe('watch', () => {
     setTimeout(() => {
       expect(spy.calls.count()).toEqual(1)
       done()
+    }, 1)
+  })
+
+  it('changing a list value to a watchable data structure will watch all of the new structure', (done) => {
+    let [list, spy] = watchAndSpy([1, 2, 3])
+    list[1] = { a: 12 }
+    setTimeout(() => {
+      expect(spy.calls.count()).toEqual(1)
+      list[1].a = 13
+      setTimeout(() => {
+        expect(spy.calls.count()).toEqual(2)
+        done()
+      })
     }, 1)
   })
 
@@ -264,8 +277,8 @@ describe('watch', () => {
     }, 1)
   })
 
-  it("also works with state.observe(handler) as well as state.on('change', handler)", (done) => {
-    let [list, spy] = watchAndSpyWithObserve([1, 2, 3])
+  it("also works with state.on('change', handler) as well as state.observe(handler)", (done) => {
+    let [list, spy] = watchAndSpyWithOnChange([1, 2, 3])
     list[1] = 15
     setTimeout(() => {
       expect(spy.calls.count()).toEqual(1)
